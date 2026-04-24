@@ -24,11 +24,11 @@ Upload solutions to github with Readme
 
 1. level.h  : Data race
    
-  The problem in level.h is "g_level" variable has been read by first thread and changed by second thread and they did not use synchronization between them.
-  It is not correct because this is a data race leads to undefined behavior, but It is intermittent because since the behavior depends on thread scheduling 
-  and timing, so it may be correct and sometimes fails. 
-  For fixing: changed g_level from int to std::atomic<int> and used atomic operations.
-  This fix is correct because atomic operations remove the race and make concurrent access safe.
+   The problem in level.h is "g_level" variable has been read by first thread and changed by second thread and they did not use synchronization between them.
+   It is not correct because this is a data race leads to undefined behavior, but It is intermittent because since the behavior depends on thread scheduling 
+   and timing, so it may be correct and sometimes fails. 
+   For fixing: changed g_level from int to std::atomic<int> and used atomic operations.
+   This fix is correct because atomic operations remove the race and make concurrent access safe.
 
 2. shutdown.h  :  Logger lifetime / shutdown race
 
